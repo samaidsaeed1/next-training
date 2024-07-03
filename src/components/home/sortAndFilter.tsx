@@ -1,9 +1,11 @@
 "use client"
-import { Button, ButtonGroup } from "reactstrap";
+import { useState } from "react";
+import { Button, ButtonGroup, Input, InputGroup } from "reactstrap";
 
 export default function SortAndFilter(props: any) {
 
-    const { sortBy, sortOrder, handleSort, setSortOrder } = props;
+    const { sortBy, sortOrder, handleSort, setSortOrder, handleSearch } = props;
+    const [keyword, setKeyword] = useState('');
 
     return (
         <>
@@ -16,7 +18,7 @@ export default function SortAndFilter(props: any) {
             <br />
             <b>Sort By</b>
             <br />
-            <ButtonGroup className="mt-2">
+            <ButtonGroup className="my-2">
                 <Button
                     color="primary"
                     outline
@@ -42,6 +44,21 @@ export default function SortAndFilter(props: any) {
                     Price
                 </Button>
             </ButtonGroup>
+            <br />
+            <b>Quick Search</b>
+            <div>
+                <InputGroup>
+                    <Input 
+                        placeholder="Search sales or sellers"
+                        value={keyword}
+                        onChange={(e) => setKeyword(e.target.value)}
+                        />
+                    <Button color="primary" outline onClick={() => {handleSearch(keyword)}}>
+                        Go
+                    </Button>
+                </InputGroup>
+                <br />
+            </div>
         </>
     )
 }

@@ -1,17 +1,27 @@
+import wretch from "wretch"
 import { BASE_URL } from "./config"
 
+const api =
+  wretch(BASE_URL, { mode: "cors" })
+    .errorType("json")
+    .resolve(r => r.json())
+
 export async function fetchUpcomingAuctions(query: string) {
-    const res = await fetch(`${BASE_URL}/api/ProductList${query ? query : '?page=1'}&limit=5`)
-    if (!res.ok) {
-      throw new Error('Failed to fetch data')
+    try {
+      const res = await api.get(`/api/ProductList${query ? query : '?page=1'}&limit=5`)
+      return res;
     }
-    return res.json()
+    catch (error) {
+      return []
+    }
   }
 
   export async function fetchPopularVendors() {
-    const res = await fetch(`${BASE_URL}/api/popularVendors`)
-    if (!res.ok) {
-      throw new Error('Failed to fetch data')
+    try {
+      const res = await api.get(`/api/popularVendors`)
+      return res
     }
-    return res.json()
+    catch (e) {
+      return []
+    }
   }
