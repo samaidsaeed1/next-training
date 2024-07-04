@@ -20,6 +20,21 @@ export default function NavBar() {
             <Link href="/">Account</Link>
             </NavLink>
         </NavItem>
+        <NavItem>
+            <NavLink>
+            <Link href="/categories/phones">Smart Phones</Link>
+            </NavLink>
+        </NavItem>
+        <NavItem>
+            <NavLink>
+            <Link href="/categories/audio">Sound</Link>
+            </NavLink>
+        </NavItem>
+        <NavItem>
+            <NavLink>
+            <Link href="/categories/appliances">Home Appliances</Link>
+            </NavLink>
+        </NavItem>
         </Nav>
     </Navbar>
 }

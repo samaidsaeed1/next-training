@@ -6,9 +6,19 @@ const api =
     .errorType("json")
     .resolve(r => r.json())
 
-export async function fetchUpcomingAuctions(query: string) {
+export async function fetchUpcomingAuctions(query: string = '') {
     try {
       const res = await api.get(`/api/ProductList${query ? query : '?page=1'}&limit=5`)
+      return res;
+    }
+    catch (error) {
+      return []
+    }
+  }
+
+  export async function fetchSaleById(id: string) {
+    try {
+      const res = await api.get(`/api/ProductList/${id}`)
       return res;
     }
     catch (error) {

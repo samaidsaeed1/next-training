@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { get } from "lodash";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Auction(props: any) {
     const { auction } = props;
@@ -37,7 +38,7 @@ export default function Auction(props: any) {
             </p>
         </div>
         <div className="col-12 col-md-4 col-lg-3">
-            <button type="button" className="d-block my-2 btn btn-primary">View Item</button>
+            <Link href={`/sale/${auction.id}`} className="d-block my-2 btn btn-primary">View Item</Link>
         </div>
     </div>
     )
